@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Button} from "./components/Button";
+import {Newcomponents3} from "./Newcomponents3";
+
 
 function App() {
     // const Button1Foo = (subscriber: string, age: number) => {
@@ -12,25 +13,20 @@ function App() {
     // const Button3Foo = () => {
     //     console.log('I am stupid button')
     // }
-    let [a, setA] = useState(1)
-    const onClickHandler = () => {
-        setA(++a)
-    }
-    const numbing = () => {
-        setA(a = 0)
-    }
+    const [money, setMoney] = useState([
+        {banknots: 'Dollars', value: 100, number: ' a1234567890'},
+        {banknots: 'Dollars', value: 50, number: ' z1234567890'},
+        {banknots: 'RUBLS', value: 100, number: ' w1234567890'},
+        {banknots: 'Dollars', value: 100, number: ' e1234567890'},
+        {banknots: 'Dollars', value: 50, number: ' c1234567890'},
+        {banknots: 'RUBLS', value: 100, number: ' r1234567890'},
+        {banknots: 'Dollars', value: 50, number: ' x1234567890'},
+        {banknots: 'RUBLS', value: 50, number: ' v1234567890'},
+    ])
+
     return (
-        <div className='App'>
-            {/*<Button name={'MyYouTubeChanel-1'} callBack={() => Button1Foo('I am Vasya', 21)}/>*/}
-            {/*<Button name={'MyYouTubeChanel-2'} callBack={() => Button2Foo('I am Ivan')}/>*/}
-            {/*<Button name={'MyYouTubeChanel-3'} callBack={Button3Foo}/>*/}
-            <h1>{a}</h1>
-            <button onClick={onClickHandler}>number</button>
-            <button onClick={numbing}>0</button>
-        </div>
+        <Newcomponents3 arr={money}/>
     )
-
 }
-
 
 export default App
