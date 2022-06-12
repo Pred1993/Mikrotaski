@@ -1,37 +1,30 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
-import {MoneyType, NewComponents4} from "./site/NewComponents4";
-
-export type FilterType = 'all' | 'Dollars' | 'RUBLS'
-
+import { useState } from 'react';
+import { FullInput } from './components/Fullinput';
+export type messageType = {
+  message: string;
+};
 function App() {
-    const [money, setMoney] = useState<Array<MoneyType>> ([
-        {id: 1, banknots: 'Dollars', value: 100, number: ' a1234567890'},
-        {id: 2, banknots: 'Dollars', value: 50, number: ' z1234567890'},
-        {id: 3, banknots: 'RUBLS', value: 100, number: ' w1234567890'},
-        {id: 4, banknots: 'Dollars', value: 100, number: ' e1234567890'},
-        {id: 5, banknots: 'Dollars', value: 50, number: ' c1234567890'},
-        {id: 6, banknots: 'RUBLS', value: 100, number: ' r1234567890'},
-        {id: 7, banknots: 'Dollars', value: 50, number: ' x1234567890'},
-        {id: 8, banknots: 'RUBLS', value: 50, number: ' v1234567890'},
-    ])
-    const [filter, setFilter] = useState<FilterType>('all')
-    const filterFunction = (filter: FilterType) => {
-        setFilter(filter)
-    }
-    let moneyFilter = money
-    if (filter === 'Dollars') {
-        moneyFilter = money.filter(t => t.banknots === filter)
-    }
-    if (filter === 'RUBLS') {
-        moneyFilter = money.filter(t => t.banknots === filter)
-    }
-    return (
-        <NewComponents4
-            money={moneyFilter}
-            filterFunction={filterFunction}
-        />
-    )
-}
+  let [message, setMessage] = useState<Array<messageType>>([
+    { message: 'message1' },
+    { message: 'message1' },
+    { message: 'message1' },
+  ]);
+  const addMessage = (title: string) => {
+    console.log(title)
+    const newObject = {message: title}
+    const newMessage = [newObject, ... message]
+    setMessage(newMessage);
+  };
 
-export default App
+  return (
+    <div className={'App'}>
+      <FullInput addMessage={addMessage} />
+      {message.map((el, index: number) => {
+        return <div key={index}>{el.message}</div>;
+      })}
+    </div>
+  );
+}
+export default App;
